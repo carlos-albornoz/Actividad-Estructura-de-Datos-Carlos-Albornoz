@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulacion de Stock</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: wheat;
+        }
+
+        .contenedor{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2,h3{
+            text-align: center;
+            margin: 5px;
+        }
+
+        hr{
+            margin: 20px 0;
+        }
+
+        .resultado{
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+
+<script>
+
+document.write("<h2>REPUBLICA BOLIVARIANA DE VENEZUELA</h2>");
+document.write("<h3>INSTITUTO UNIVERSITARIO POLITECNICO 'SANTIAGO MARIÑO'</h3>");
+document.write("<h3>EXTENSION MERIDA</h3>");
+document.write("<h3>ESCUELA DE INGENIERIA DE SISTEMAS</h3>");
+document.write("<h3>Carlos A. Albornoz P.</h3>"); 
+document.write("<hr>");
+document.write("<h3>ARREGLOS - SIMULACION DE STOCK</h3>");
+
+let inventario = [];
+let ventas = [];
+let saldo = [];
+let alerta = [];
+let N;
+
+N = parseInt(prompt("Ingrese la cantidad de productos del inventario:"));
+
+while (N <= 0 || isNaN(N)) {
+    N = parseInt(prompt("error. Ingrese una cantidad valida:"));
+}
+
+for (let i = 0; i < N; i++) {
+    inventario[i] = parseInt(prompt("Ingresee stock actual del producto N° " + (i + 1) + ":"));
+
+    while (isNaN(inventario[i])) {
+        inventario[i] = parseInt(prompt("Dato invalido. Ingrese nuevamente stock del producto N° " + (i + 1) + ":"));
+    }
+}
+
+for (let i = 0; i < N; i++) {
+    ventas[i] = parseInt(prompt("Ingrese ventas del dia del producto N° " + (i + 1) + ":"));
+
+    while (isNaN(ventas[i])) {
+        ventas[i] = parseInt(prompt("Dato invalido. Ingrese nuevamente ventas del produccto N° " + (i + 1) + ":"));
+    }
+}
+
+for (let i = 0; i < N; i++) {
+    saldo[i] = inventario[i] - ventas[i];
+
+    if (saldo[i] <= 0) {
+        alerta.push(i + 1);
+    }
+}
+
+document.write("<div class='resultado'>");
+
+document.write("<br><strong>Inventario actual:</strong><br>");
+for (let i = 0; i < N; i++) {
+    document.write("[" + inventario[i] + "] ");
+}
+
+document.write("<br><br><strong>Ventas del dia:</strong><br>");
+for (let i = 0; i < N; i++) {
+    document.write("[" + ventas[i] + "] ");
+}
+
+document.write("<br><br><strong>Saldo final del inventario:</strong><br>");
+for (let i = 0; i < N; i++) {
+    document.write("[" + saldo[i] + "] ");
+}
+
+document.write("<br><br><strong>Vector de alerta (Productos en cero o negativo):</strong><br>");
+
+if (alerta.length > 0) {
+    for (let i = 0; i < alerta.length; i++) {
+        document.write("[" + alerta[i] + "] ");
+    }
+} else {
+    document.write("No existen productos en estado crítico.");
+}
+
+document.write("<br><br><hr>");
+document.write("<strong>Simulacion de stock realizada correctamente.</strong>");
+document.write("</div>");
+
+</script>
+
+</div>
+
+</body>
+</html>

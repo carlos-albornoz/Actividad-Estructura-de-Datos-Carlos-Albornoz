@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criba de Selección</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: wheat;
+        }
+
+        .contenedor{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2,h3{
+            text-align: center;
+            margin: 5px;
+        }
+
+        hr{
+            margin: 20px 0;
+        }
+
+        .resultado{
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+
+<script>
+
+document.write("<h2>REPUBLICA BOLIVARIANA DE VENEZUELA</h2>");
+document.write("<h3>INSTITUTO UNIVERSITARIO POLITECNICO 'SANTIAGO MARIÑO'</h3>");
+document.write("<h3>EXTENSION MERIDA</h3>");
+document.write("<h3>ESCUELA DE INGENIERIA DE SISTEMAS</h3>");
+document.write("<h3>Carlos A. Albornoz P.</h3>"); 
+document.write("<hr>");
+document.write("<h3>ARREGLOS - CRIBA DE SELECCION</h3>");
+
+
+let numeros = [];
+let pares = [];
+let impares = [];
+let resultado = [];
+
+
+for (let i = 0; i < 20; i++) {
+    numeros[i] = Math.floor(Math.random() * 100) + 1;
+}
+
+document.write("<div class='resultado'>");
+document.write("<br><strong>Vector original aleatorio:</strong><br>");
+for (let i = 0; i < 20; i++) {
+    document.write("[" + numeros[i] + "] ");
+}
+
+for (let i = 0; i < 20; i++) {
+    if (numeros[i] % 2 === 0) {
+        pares.push(numeros[i]);
+    } else {
+        impares.push(numeros[i]);
+    }
+}
+
+resultado = pares.concat(impares);
+
+document.write("<br><br><strong>Vector reorganizado (Pares primero e Impares despue):</strong><br>");
+for (let i = 0; i < resultado.length; i++) {
+    document.write("[" + resultado[i] + "] ");
+}
+
+document.write("<br><br><hr>");
+document.write("<strong>Proceso de criba realizado correctamente.</strong>");
+document.write("</div>");
+
+</script>
+
+</div>
+
+</body>
+</html>

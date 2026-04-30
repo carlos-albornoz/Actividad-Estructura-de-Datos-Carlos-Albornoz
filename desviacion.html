@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Desviacion</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: wheat;
+        }
+
+        .contenedor{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2,h3{
+            text-align: center;
+            margin: 5px;
+        }
+
+        hr{
+            margin: 20px 0;
+        }
+
+        .resultado{
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+
+<script>
+
+document.write("<h2>REPUBLICA BOLIVARIANA DE VENEZUELA</h2>");
+document.write("<h3>INSTITUTO UNIVERSITARIO POLITECNICO 'SANTIAGO MARIÑO'</h3>");
+document.write("<h3>EXTENSION MERIDA</h3>");
+document.write("<h3>ESCUELA DE INGENIERIA DE SISTEMAS</h3>");   
+document.write("<h3>Carlos A. Albornoz P.</h3>");   
+document.write("<hr>");
+document.write("<h3>ARREGLOS - ANALISIS DE DESVIACIÓN</h3>");
+
+let temperaturas = [];
+let residual = [];
+let suma = 0;
+let Promedio;
+
+let N = parseInt(prompt("Ingrese la cantidad de temperaturas a registrar:"));
+
+
+while (N <= 0 || isNaN(N)) {
+    N = parseInt(prompt("Error. Ingrese una cantidad valida:"));
+}
+
+for (let i = 0; i < N; i++) {
+    temperaturas[i] = parseFloat(prompt("Ingrese la temperatura N° " + (i + 1) + ":"));
+
+    while (isNaN(temperaturas[i])) {
+        temperaturas[i] = parseFloat(prompt("Dato invalido. Ingrese nuevamente la temperatura N° " + (i + 1) + ":"));
+    }
+
+    suma += temperaturas[i];
+}
+
+promedio = suma / N;
+
+for (let i = 0; i < N; i++) {
+    residual[i] = temperaturas[i] - promedio;
+}
+
+document.write("<div class= resultado>");
+document.write("<br><strong>Vector de temperaturas:</strong><br>");
+for (let i = 0; i < N; i++) {
+    document.write("[" + temperaturas[i] + "] ");
+}
+
+document.write("<br><br><strong>Promedio de temperaturas:</strong> " + promedio.toFixed(2));
+
+document.write("<br><br><strong>Vector de error residual:</strong><br>");
+for (let i = 0; i < N; i++) {
+    document.write("[" + residual[i].toFixed(2) + "] ");
+}
+
+document.write("<br><br><hr>");
+document.write("<strong>Programa ejecutado correctamente.</strong>");
+document.write("</div>");
+
+</script>
+
+</div>
+
+</body>
+</html>

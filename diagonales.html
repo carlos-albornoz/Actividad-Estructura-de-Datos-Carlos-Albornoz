@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagonal Principal y Secundaria</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: wheat;
+        }
+
+        .contenedor{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2,h3{
+            text-align: center;
+            margin: 5px;
+        }
+
+        hr{
+            margin: 20px 0;
+        }
+
+        .resultado{
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+
+<script>
+
+document.write("<h2>REPUBLICA BOLIVARIANA DE VENEZUELA</h2>");
+document.write("<h3>INSTITUTO UNIVERSITARIO POLITECNICO 'SANTIAGO MARIÑO'</h3>");
+document.write("<h3>EXTENSION MERIDA</h3>");
+document.write("<h3>ESCUELA DE INGENIERIA DE SISTEMAS</h3>");
+document.write("<h3>Carlos A. Albornoz P.</h3>"); 
+document.write("<hr>");
+document.write("<h3>ARREGLOS - DIAGONALES</h3>");
+
+let n = parseInt(prompt("Ingrese el tamaño de la matriz (n x n):"));
+
+let matriz = [];
+
+for (let i = 0; i < n; i++) {
+    matriz[i] = [];
+    for (let j = 0; j < n; j++) {
+        matriz[i][j] = parseInt(prompt("Ingrese valor [" + i + "][" + j + "]:"));
+
+        while (isNaN(matriz[i][j])) {
+            matriz[i][j] = parseInt(prompt("Dato invalido. Ingrese nuevamente [" + i + "][" + j + "]:"));
+        }
+    }
+}
+
+let sumaPrincipal = 0;
+let sumaSecundaria = 0;
+
+document.write("<div class='resultado'>");
+document.write("<br><strong>Matriz:</strong><br>");
+
+for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+        document.write(matriz[i][j] + " ");
+    }
+    document.write("<br>");
+}
+
+for (let i = 0; i < n; i++) {
+    sumaPrincipal += matriz[i][i];
+    sumaSecundaria += matriz[i][n - 1 - i];
+}
+
+document.write("<br><strong>Suma Diagonal principal:</strong> " + sumaPrincipal);
+document.write("<br><strong>Suma Diagonal secundaria:</strong> " + sumaSecundaria);
+
+document.write("<br><br><strong>Resultado:</strong><br>");
+
+if (sumaPrincipal > sumaSecundaria) {
+    document.write("✔ La diagonal principal es mayor.");
+} else if (sumaSecundaria > sumaPrincipal) {
+    document.write("✔ La diagonal secundaria es mayor.");
+} else {
+    document.write("✔ Ambas diagonales son iguales.");
+}
+
+document.write("<br><br><hr>");
+document.write("<strong>Proceso completado correctamente.</strong>");
+document.write("</div>");
+
+</script>
+
+</div>
+
+</body>
+</html>

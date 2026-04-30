@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validacion de Integridad</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: wheat;
+        }
+
+        .contenedor{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2,h3{
+            text-align: center;
+            margin: 5px;
+        }
+
+        hr{
+            margin: 20px 0;
+        }
+
+        .resultado{
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+
+<script>
+
+document.write("<h2>REPUBLICA BOLIVARIANA DE VENEZUELA</h2>");
+document.write("<h3>INSTITUTO UNIVERSITARIO POLITECNICO 'SANTIAGO MARIÑO'</h3>");
+document.write("<h3>EXTENSION MERIDA</h3>");
+document.write("<h3>ESCUELA DE INGENIERIA DE SISTEMAS</h3>");
+document.write("<h3>Carlos A. Albornoz P.</h3>"); 
+document.write("<hr>");
+document.write("<h3>ARREGLOS - VALIDACIÓN DE INTEGRIDAD</h3>");
+
+let codigos = [];
+let N;
+let duplicado = false;
+
+N = parseInt(prompt("Ingrese la cantidad de codigos de producctos:"));
+
+while (N <= 0 || isNaN(N)) {
+    N = parseInt(prompt("error. Ingrese una cantidad valida:"));
+}
+
+for (let i = 0; i < N; i++) {
+    codigos[i] = prompt("Ingrese el codigo del producto N° " + (i + 1) + ":");
+}
+
+document.write("<div class='resultado'>");
+document.write("<br><strong>Vector de Codigos:</strong><br>");
+for (let i = 0; i < N; i++) {
+    document.write("[" + codigos[i] + "] ");
+}
+
+document.write("<br><br><strong>Resultado de la Auditoria:</strong><br>");
+
+for (let i = 0; i < N; i++) {
+    for (let j = i + 1; j < N; j++) {
+        if (codigos[i] === codigos[j]) {
+            duplicado = true;
+            document.write("Código duplicado detectadoo: <strong>" + codigos[i] + "</strong> en posiciones " + (i+1) + " y " + (j+1) + "<br>");
+        }
+    }
+}
+
+if (duplicado === false) {
+    document.write("No se encontraron codigos duplicados en el vector.");
+}
+
+document.write("<br><br><hr>");
+document.write("<strong>Validacion finalizada correctamente.</strong>");
+document.write("</div>");
+
+</script>
+
+</div>
+
+</body>
+</html>

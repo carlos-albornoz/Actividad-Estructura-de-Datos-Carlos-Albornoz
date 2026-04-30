@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplicacion de Matrices</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: wheat;
+        }
+
+        .contenedor{
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h2,h3{
+            text-align: center;
+            margin: 5px;
+        }
+
+        hr{
+            margin: 20px 0;
+        }
+
+        .resultado{
+            font-size: 18px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+
+<script>
+
+document.write("<h2>REPUBLICA BOLIVARIANA DE VENEZUELA</h2>");
+document.write("<h3>INSTITUTO UNIVERSITARIO POLITECNICO 'SANTIAGO MARIÑO'</h3>");
+document.write("<h3>EXTENSION MERIDA</h3>");
+document.write("<h3>ESCUELA DE INGENIERIA DE SISTEMAS</h3>");
+document.write("<h3>Carlos A. Albornoz P.</h3>"); 
+document.write("<hr>");
+document.write("<h3>ARREGLOS - MULTIPLICACION DE MATRICES</h3>");
+
+let nA = parseInt(prompt("Filas de A:"));
+let mA = parseInt(prompt("Columnas de A:"));
+
+let nB = parseInt(prompt("Filas de B:"));
+let mB = parseInt(prompt("Columnas de B:"));
+
+if (mA !== nB) {
+    document.write("<h3 style='color:red;'>No se pueden multiplicar las matrices</h3>");
+} else {
+
+    let A = [];
+    let B = [];
+    let C = [];
+
+    for (let i = 0; i < nA; i++) {
+        C[i] = [];
+        for (let j = 0; j < mB; j++) {
+            C[i][j] = 0;
+        }
+    }
+
+    for (let i = 0; i < nA; i++) {
+        A[i] = [];
+        for (let j = 0; j < mA; j++) {
+            A[i][j] = parseInt(prompt("A[" + i + "][" + j + "]:"));
+        }
+    }
+
+    for (let i = 0; i < nB; i++) {
+        B[i] = [];
+        for (let j = 0; j < mB; j++) {
+            B[i][j] = parseInt(prompt("B[" + i + "][" + j + "]:"));
+        }
+    }
+
+    for (let i = 0; i < nA; i++) {
+        for (let j = 0; j < mB; j++) {
+            for (let k = 0; k < mA; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    document.write("<div class='resultado'>");
+    document.write("<br><strong>Matriz A:</strong><br>");
+    for (let i = 0; i < nA; i++) {
+        for (let j = 0; j < mA; j++) {
+            document.write(A[i][j] + "   ");
+        }
+        document.write("<br>");
+    }
+
+    document.write("<br><strong>Matriz B:</strong><br>");
+    for (let i = 0; i < nB; i++) {
+        for (let j = 0; j < mB; j++) {
+            document.write(B[i][j] + "   ");
+        }
+        document.write("<br>");
+    }
+
+    document.write("<br><strong>Matriz resultante (C):</strong><br>");
+    for (let i = 0; i < nA; i++) {
+        for (let j = 0; j < mB; j++) {
+            document.write(C[i][j] + "   ");
+        }
+        document.write("<br>");
+    }
+
+    document.write("<br><hr>");
+    document.write("<strong>Multiplicacion realizada correctamente.</strong>");
+    document.write("</div>");
+}
+
+</script>
+
+</div>
+
+</body>
+</html>
